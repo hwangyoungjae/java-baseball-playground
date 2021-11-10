@@ -1,11 +1,22 @@
 package baseball;
 
+import utils.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Balls {
     public final List<Ball> balls;
+
+    public static Balls generateRandomBalls() {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < BallPosition.MAX_POSITION) {
+            Integer n = RandomUtils.nextInt(BallNumber.MIN_NUMBER, BallNumber.MAX_NUMBER);
+            if (!numbers.contains(n)) numbers.add(n);
+        }
+        return Balls.numberOf(numbers);
+    }
 
     private Balls(List<Ball> answerBalls) {
         this.balls = answerBalls;
@@ -43,5 +54,10 @@ public class Balls {
         if (numbers.size() != hashSet.size()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public String toString() {
+        return balls.toString();
     }
 }
