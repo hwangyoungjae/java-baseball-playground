@@ -1,3 +1,7 @@
+ext {
+    LombokVersion = "1.18.22"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -6,14 +10,21 @@ version = '1.0.0'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
+
+    implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
     testImplementation "org.assertj:assertj-core:3.19.0"
+
+    // lombok
+    compileOnly "org.projectlombok:lombok:${LombokVersion}"
+    implementation "org.projectlombok:lombok:${LombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${LombokVersion}"
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
