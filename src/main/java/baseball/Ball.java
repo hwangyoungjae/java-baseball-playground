@@ -36,4 +36,9 @@ public class Ball {
         result = 31 * result + ballNumber.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(ballNumber);
+    }
 }

@@ -34,4 +34,9 @@ public class BallNumber {
     public int hashCode() {
         return number;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
 }
