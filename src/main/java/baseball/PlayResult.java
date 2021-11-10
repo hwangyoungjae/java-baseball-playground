@@ -21,6 +21,10 @@ public class PlayResult {
         }
     }
 
+    public boolean isNothing() {
+        return ball == 0 && strike == 0;
+    }
+
     public boolean isEnded() {
         return strike == BallPosition.MAX_POSITION;
     }
