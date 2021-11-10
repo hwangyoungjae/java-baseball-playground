@@ -1,18 +1,20 @@
 package baseball;
 
+import baseball.exceptions.InvalidArgumentError;
+
 public class BallPosition {
     public static final int MIN_POSITION = 1;
     public static final int MAX_POSITION = 3;
     private final int position;
 
-    public BallPosition(int position) {
+    public BallPosition(int position) throws InvalidArgumentError {
         validation(position);
         this.position = position;
     }
 
-    private void validation(int n) {
+    private void validation(int n) throws InvalidArgumentError {
         if (n < MIN_POSITION || n > MAX_POSITION) {
-            throw new IllegalStateException();
+            throw new InvalidArgumentError();
         }
     }
 

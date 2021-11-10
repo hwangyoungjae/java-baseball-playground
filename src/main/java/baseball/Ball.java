@@ -1,10 +1,12 @@
 package baseball;
 
+import baseball.exceptions.InvalidArgumentError;
+
 public class Ball {
     private final BallPosition ballPosition;
     private final BallNumber ballNumber;
 
-    public Ball(int position, int number) {
+    public Ball(int position, int number) throws InvalidArgumentError {
         ballPosition = new BallPosition(position);
         ballNumber = new BallNumber(number);
     }

@@ -11,7 +11,13 @@ public class Application {
     private Balls answerBalls;
 
     public static void main(String[] args) {
-        Application app = new Application();
+        inputUserBalls();
+    }
+
+    static Balls inputUserBalls() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = scanner.nextLine();
+        return Balls.numberOf(stringToArrayList(input));
     }
 
     public Application() {
@@ -26,9 +32,7 @@ public class Application {
 
     private void loop() {
         start();
-        while (gameStatus != GameStatus.QUIT) {
-            run();
-        }
+        while (gameStatus != GameStatus.QUIT) run();
     }
 
     void run() {

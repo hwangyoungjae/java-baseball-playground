@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exceptions.InvalidArgumentError;
 import utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -15,14 +16,18 @@ public class Balls {
             Integer n = RandomUtils.nextInt(BallNumber.MIN_NUMBER, BallNumber.MAX_NUMBER);
             if (!numbers.contains(n)) numbers.add(n);
         }
-        return Balls.numberOf(numbers);
+        try {
+            return Balls.numberOf(numbers);
+        } catch (InvalidArgumentError e) {
+            throw new RuntimeException();
+        }
     }
 
     private Balls(List<Ball> answerBalls) {
         this.balls = answerBalls;
     }
 
-    static Balls numberOf(List<Integer> numbers) {
+    static Balls numberOf(List<Integer> numbers) throws InvalidArgumentError {
         validationDuplicatedNumbers(numbers);
         ArrayList<Ball> arr = new ArrayList<>();
         for (int i = 0; i < numbers.size(); i++) {

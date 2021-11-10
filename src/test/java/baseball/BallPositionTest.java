@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.exceptions.InvalidArgumentError;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,27 +10,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class BallPositionTest {
     @Test
     void validation() {
-        assertThatExceptionOfType(IllegalStateException.class)
+        assertThatExceptionOfType(InvalidArgumentError.class)
                 .isThrownBy(() -> new BallPosition(0));
-        assertThatExceptionOfType(IllegalStateException.class)
+        assertThatExceptionOfType(InvalidArgumentError.class)
                 .isThrownBy(() -> new BallPosition(4));
     }
 
     @Test
-    void getPosition() {
+    void getPosition() throws InvalidArgumentError {
         BallPosition ballPosition = new BallPosition(1);
         assertThat(ballPosition.getPosition()).isEqualTo(1);
     }
 
     @Test
-    void equalsSucc() {
+    void equalsSucc() throws InvalidArgumentError {
         BallPosition b1 = new BallPosition(1);
         BallPosition b2 = new BallPosition(1);
         assertThat(b1.equals(b2)).isTrue();
     }
 
     @Test
-    void equalsFail() {
+    void equalsFail() throws InvalidArgumentError {
         BallPosition b1 = new BallPosition(1);
         BallPosition b2 = new BallPosition(2);
         assertThat(b1.equals(b2)).isFalse();

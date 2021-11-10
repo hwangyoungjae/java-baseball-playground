@@ -1,11 +1,13 @@
 package baseball;
 
+import baseball.exceptions.InvalidArgumentError;
+
 public class BallNumber {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
     private final int number;
 
-    public BallNumber(int number) {
+    public BallNumber(int number) throws InvalidArgumentError {
         validation(number);
         this.number = number;
     }
@@ -14,9 +16,9 @@ public class BallNumber {
         return number;
     }
 
-    private void validation(int n) {
+    private void validation(int n) throws InvalidArgumentError {
         if (n < MIN_NUMBER || n > MAX_NUMBER) {
-            throw new IllegalStateException();
+            throw new InvalidArgumentError();
         }
     }
 
