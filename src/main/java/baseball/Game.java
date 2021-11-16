@@ -1,8 +1,5 @@
 package baseball;
 
-import baseball.Ball;
-import baseball.Balls;
-import baseball.PlayResult;
 import baseball.exceptions.InvalidError;
 import utils.RandomUtils;
 

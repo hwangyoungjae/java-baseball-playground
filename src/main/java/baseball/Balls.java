@@ -1,11 +1,12 @@
 package baseball;
 
-import baseball.exceptions.*;
+import baseball.exceptions.InvalidBallPositionError;
+import baseball.exceptions.InvalidBallsDuplicatedError;
+import baseball.exceptions.InvalidError;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Objects;
 
 public class Balls {
     private final List<Ball> balls;
@@ -68,5 +69,15 @@ public class Balls {
             result.evaluation(match(userBall));
         }
         return result;
+    }
+
+    public boolean equals(Balls target) {
+        if (balls.size() != target.balls.size()) return false;
+        for (int i = 0; i < balls.size(); i++) {
+            if (!balls.get(i).equals(target.balls.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }

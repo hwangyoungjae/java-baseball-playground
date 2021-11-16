@@ -5,7 +5,7 @@ import baseball.exceptions.InvalidError;
 import java.util.Scanner;
 
 public class Application {
-    static final Scanner scanner = new Scanner(System.in);
+    static Scanner scanner;
     Game game;
     boolean quitFlag = false;
 
@@ -68,31 +68,31 @@ public class Application {
     }
 
     void newGame() {
-//        Balls balls = null;
-//        try {
-//            balls = Balls.ofArray(Arrays.asList(1, 2, 3));
-//        } catch (InvalidError e) {
-//            e.printStackTrace();
-//        }
-//        game = new Game(balls);
         game = new Game();
     }
 
-    String inputPitchingNumber() {
+    public String inputPitchingNumber() {
         System.out.print(Msg.INPUT_PITCHING_NUMBER);
-        return scanner.nextLine();
+        return getScanner().nextLine();
     }
 
-    Balls pitchingNumberToBalls(String pitchingNumber) throws InvalidError {
+    public Balls pitchingNumberToBalls(String pitchingNumber) throws InvalidError {
         return Balls.ofString(pitchingNumber);
     }
 
-    String inputMenuNumber() {
+    public String inputMenuNumber() {
         System.out.print(Msg.INPUT_GAME_MENU);
-        return scanner.nextLine();
+        return getScanner().nextLine();
     }
 
-    Menu menuNumberToMenu(String menuNumberString) {
+    public Menu menuNumberToMenu(String menuNumberString) {
         return Menu.values()[Integer.parseInt(menuNumberString) - 1];
+    }
+
+    private Scanner getScanner() {
+        if (scanner == null) {
+            scanner = new Scanner(System.in);
+        }
+        return scanner;
     }
 }
